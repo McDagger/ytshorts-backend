@@ -2,8 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, origins=["https://ytshortsuploader.netlify.app"])
-
+CORS(app, resources={r"/*": {"origins": "https://ytshortsuploader.netlify.app"}})
 
 @app.route("/")
 def home():
@@ -11,7 +10,6 @@ def home():
 
 @app.route("/generate", methods=["POST"])
 def generate():
-    # Placeholder logic
     return jsonify({"message": "Video generation endpoint reached!"})
 
 if __name__ == "__main__":
